@@ -29,7 +29,7 @@ namespace MLogHelperDotNet.Extensions
     /// <summary>T extensions.</summary>
     /// <remarks>RzR, 02-Dec-23.</remarks>
     /// =================================================================================================
-    public static class TExtensions
+    internal static class TExtensions
     {
         /// -------------------------------------------------------------------------------------------------
         /// <summary>Get sub array.</summary>
