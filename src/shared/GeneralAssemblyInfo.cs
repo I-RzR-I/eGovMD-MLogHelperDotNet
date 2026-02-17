@@ -29,7 +29,7 @@ using System.Resources;
 
 [assembly: AssemblyCompany("RzR ®")]
 [assembly: AssemblyProduct("e-GOV MD MLogHelperDotNet")]
-[assembly: AssemblyCopyright("Copyright © 2022-2024 RzR All rights reserved.")]
+[assembly: AssemblyCopyright("Copyright © 2022-2026 RzR All rights reserved.")]
 [assembly: AssemblyTrademark("® RzR™")]
 [assembly: AssemblyDescription("A wrapper for governmental logging service for a quick way to implement it with a few configuration settings. Service is provided by an e-governance agency (https://egov.md/), named `MLog`, available in the Republic of Moldova.")]
 

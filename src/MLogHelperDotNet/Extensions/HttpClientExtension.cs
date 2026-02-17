@@ -19,7 +19,7 @@
 using AggregatedGenericResultMessage;
 using AggregatedGenericResultMessage.Abstractions;
 using AggregatedGenericResultMessage.Extensions.Result;
-using DomainCommonExtensions.DataTypeExtensions;
+using DomainCommonExtensions.Utilities.Ensure;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
