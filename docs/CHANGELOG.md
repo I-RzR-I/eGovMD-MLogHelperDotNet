@@ -1,3 +1,7 @@
+### **v1.0.3.367** [[RzR](mailto:108324929+I-RzR-I@users.noreply.github.com)] 25-02-2026
+* [be9e5b7] (RzR) -> Auto commit uncommited files
+* [46e2263] (RzR) -> Upgrade reference package version (fixed version)
+
 ### **v1.0.2.8022** [[RzR](mailto:108324929+I-RzR-I@users.noreply.github.com)] 17-02-2026
 * [656df91] (RzR) -> Auto commit uncommited files
 * [7aa63dc] (RzR) -> Add new version gen scripts.
