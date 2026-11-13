@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using AggregatedGenericResultMessage.Web;
+using RzR.ResultMessage.Web;
 using MLogHelperDotNet.Abstractions;
 using MLogHelperDotNet.Enums;
 using MLogHelperDotNet.Models;

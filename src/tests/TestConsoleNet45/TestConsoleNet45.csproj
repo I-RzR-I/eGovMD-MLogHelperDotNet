@@ -32,17 +32,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AggregatedGenericResultMessage">
-      <HintPath>..\..\MLogHelperDotNet\bin\Debug\net45\AggregatedGenericResultMessage.dll</HintPath>
+    <Reference Include="RzR.ResultMessage">
+      <HintPath>..\..\MLogHelperDotNet\bin\Debug\net45\RzR.ResultMessage.dll</HintPath>
     </Reference>
-    <Reference Include="CodeSource">
-      <HintPath>..\..\MLogHelperDotNet\bin\Debug\net45\CodeSource.dll</HintPath>
+    <Reference Include="RzR.Extensions.Domain">
+      <HintPath>..\..\MLogHelperDotNet\bin\Debug\net45\RzR.Extensions.Domain.dll</HintPath>
     </Reference>
-    <Reference Include="DomainCommonExtensions">
-      <HintPath>..\..\MLogHelperDotNet\bin\Debug\net45\DomainCommonExtensions.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityMaxLengthTrim">
-      <HintPath>..\..\MLogHelperDotNet\bin\Debug\net45\EntityMaxLengthTrim.dll</HintPath>
+    <Reference Include="RzR.Extensions.EntityLength">
+      <HintPath>..\..\MLogHelperDotNet\bin\Debug\net45\RzR.Extensions.EntityLength.dll</HintPath>
     </Reference>
     <Reference Include="MLogHelperDotNet">
       <HintPath>..\..\MLogHelperDotNet\bin\Debug\net45\MLogHelperDotNet.dll</HintPath>

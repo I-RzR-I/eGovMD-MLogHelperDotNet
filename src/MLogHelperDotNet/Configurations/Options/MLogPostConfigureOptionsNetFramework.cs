@@ -21,7 +21,8 @@
 using System;
 using System.Security.Cryptography.X509Certificates;
 using System.ServiceModel;
-using DomainCommonExtensions.DataTypeExtensions;
+using RzR.Extensions.Domain.Primitives;
+using RzR.Extensions.Domain.Text;
 using MLogHelperDotNet.Configurations;
 using MLogHelperDotNet.Extensions;
 using MLogHelperDotNet.Helpers;
@@ -43,19 +44,19 @@ namespace MNotifyHelperDotNet.Configurations.Options
             var serviceConfigurationOptions = MLogConfigurationSectionNetFramework.GetRemoteMLogOptions();
 
             var remoteServiceClientAddress = serviceConfigurationOptions.ServiceClientAddress;
-            if (remoteServiceClientAddress.IsNullOrEmpty())
+            if (remoteServiceClientAddress.IsNullOrWhiteSpace())
             {
                 throw new ArgumentException($"Please provide a {nameof(serviceConfigurationOptions.ServiceClientAddress)}");
             }
 
             var serviceCertificatePath = serviceConfigurationOptions.ServiceCertificatePath;
-            if (serviceCertificatePath.IsNullOrEmpty())
+            if (serviceCertificatePath.IsNullOrWhiteSpace())
             {
                 throw new ArgumentException($"Please provide a {nameof(serviceConfigurationOptions.ServiceCertificatePath)}");
             }
 
             var serviceCertificatePassword = serviceConfigurationOptions.ServiceCertificatePassword;
-            if (serviceCertificatePassword.IsNullOrEmpty())
+            if (serviceCertificatePassword.IsNullOrWhiteSpace())
             {
                 throw new ArgumentException($"Please provide a {nameof(serviceConfigurationOptions.ServiceCertificatePassword)}");
             }

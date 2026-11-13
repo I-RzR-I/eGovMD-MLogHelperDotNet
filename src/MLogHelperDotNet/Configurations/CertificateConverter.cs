@@ -16,8 +16,7 @@
 
 #region U S A G E S
 
-using DomainCommonExtensions.CommonExtensions;
-using DomainCommonExtensions.DataTypeExtensions;
+using RzR.Extensions.Domain.Primitives;
 using System;
 using System.ComponentModel;
 using System.Globalization;

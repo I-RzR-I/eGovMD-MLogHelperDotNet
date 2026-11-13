@@ -22,30 +22,30 @@ using System;
 using System.Configuration;
 using MLogHelperDotNet.Models;
 using MLogHelperDotNet.Helpers.ConfSection;
-using DomainCommonExtensions.DataTypeExtensions;
-using DomainCommonExtensions.CommonExtensions;
+using RzR.Extensions.Domain.Text;
+using RzR.Extensions.Domain.Primitives;
 
 #endregion
 
 namespace MLogHelperDotNet.Helpers
 {
-    ///-------------------------------------------------------------------------------------------------
-    /// <summary>MLog configuration section NET Framework.</summary>
-    /// <remarks>RzR, 02-Dec-23.</remarks>
-    ///=================================================================================================
+    /// <summary>
+    ///     MLog configuration section NET Framework.
+    /// </summary>
     internal static class MLogConfigurationSectionNetFramework
     {
-        ///-------------------------------------------------------------------------------------------------
-        /// <summary>Get MLog configuration options.</summary>
-        /// <remarks>RzR, 02-Dec-23.</remarks>
+        /// <summary>
+        ///     Get MLog configuration options.
+        /// </summary>
         /// <exception cref="ArgumentNullException">
         ///     Thrown when one or more required arguments are null.
         /// </exception>
         /// <exception cref="ArgumentOutOfRangeException">
         ///     Thrown when one or more arguments are outside the required range.
         /// </exception>
-        /// <returns>The remote m log options.</returns>
-        ///=================================================================================================
+        /// <returns>
+        ///     The remote m log options.
+        /// </returns>
         internal static RemoteMLogOptions GetRemoteMLogOptions()
         {
             var configuration = new RemoteMLogOptions();

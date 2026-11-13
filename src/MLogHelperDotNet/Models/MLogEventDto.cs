@@ -16,13 +16,12 @@
 
 #region U S A G E S
 
-using DomainCommonExtensions.CommonExtensions;
+using RzR.Extensions.Domain.Primitives;
 using MLogHelperDotNet.Extensions;
 using MLogHelperDotNet.Helpers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Runtime.Serialization;
 using System.Text;
 // ReSharper disable ClassNeverInstantiated.Global
@@ -33,10 +32,9 @@ using System.Text;
 
 namespace MLogHelperDotNet.Models
 {
-    /// -------------------------------------------------------------------------------------------------
-    /// <summary>A log event data transfer object.</summary>
-    /// <remarks></remarks>
-    /// =================================================================================================
+    /// <summary>
+    ///     A log event data transfer object.
+    /// </summary>
     [Serializable]
     [DataContract]
     public class MLogEventDto
@@ -44,27 +42,27 @@ namespace MLogHelperDotNet.Models
         /// <summary>(Immutable) the properties.</summary>
         private readonly Dictionary<string, object> properties = new Dictionary<string, object>();
 
-        /// -------------------------------------------------------------------------------------------------
-        /// <summary>Constructor.</summary>
-        /// <remarks></remarks>
-        /// =================================================================================================
+        /// <summary>
+        ///     Constructor.
+        /// </summary>
         public MLogEventDto() { }
 
-        /// -------------------------------------------------------------------------------------------------
-        /// <summary>Constructor.</summary>
-        /// <remarks></remarks>
+        /// <summary>
+        ///     Constructor.
+        /// </summary>
         /// <param name="eventType">The type of the event.</param>
-        /// =================================================================================================
         public MLogEventDto(string eventType)
         {
             EventTime = DateTime.Now;
             EventType = eventType;
         }
 
-        /// -------------------------------------------------------------------------------------------------
-        /// <summary>Gets or sets the event time.</summary>
-        /// <value>The event time.</value>
-        /// =================================================================================================
+        /// <summary>
+        ///     Gets or sets the event time.
+        /// </summary>
+        /// <value>
+        ///     The event time.
+        /// </value>
         [DataMember]
         public DateTime EventTime
         {
@@ -72,10 +70,12 @@ namespace MLogHelperDotNet.Models
             set => SetProperty("event_time", value);
         }
 
-        /// -------------------------------------------------------------------------------------------------
-        /// <summary>Gets or sets the type of the event.</summary>
-        /// <value>The type of the event.</value>
-        /// =================================================================================================
+        /// <summary>
+        ///     Gets or sets the type of the event.
+        /// </summary>
+        /// <value>
+        ///     The type of the event.
+        /// </value>
         [DataMember]
         public string EventType
         {
@@ -83,10 +83,12 @@ namespace MLogHelperDotNet.Models
             set => SetProperty("event_type", value);
         }
 
-        /// -------------------------------------------------------------------------------------------------
-        /// <summary>Gets or sets the identifier of the event.</summary>
-        /// <value>The identifier of the event.</value>
-        /// =================================================================================================
+        /// <summary>
+        ///     Gets or sets the identifier of the event.
+        /// </summary>
+        /// <value>
+        ///     The identifier of the event.
+        /// </value>
         [DataMember]
         public string EventID
         {
@@ -94,10 +96,12 @@ namespace MLogHelperDotNet.Models
             set => SetProperty("event_id", value);
         }
 
-        /// -------------------------------------------------------------------------------------------------
-        /// <summary>Gets or sets the event correlation.</summary>
-        /// <value>The event correlation.</value>
-        /// =================================================================================================
+        /// <summary>
+        ///     Gets or sets the event correlation.
+        /// </summary>
+        /// <value>
+        ///     The event correlation.
+        /// </value>
         [DataMember]
         public string EventCorrelation
         {
@@ -105,10 +109,12 @@ namespace MLogHelperDotNet.Models
             set => SetProperty("event_correlation", value);
         }
 
-        /// -------------------------------------------------------------------------------------------------
-        /// <summary>Gets or sets the event level.</summary>
-        /// <value>The event level.</value>
-        /// =================================================================================================
+        /// <summary>
+        ///     Gets or sets the event level.
+        /// </summary>
+        /// <value>
+        ///     The event level.
+        /// </value>
         [DataMember]
         public string EventLevel
         {
@@ -116,10 +122,12 @@ namespace MLogHelperDotNet.Models
             set => SetProperty("event_level", value);
         }
 
-        /// -------------------------------------------------------------------------------------------------
-        /// <summary>Gets or sets the event source.</summary>
-        /// <value>The event source.</value>
-        /// =================================================================================================
+        /// <summary>
+        ///     Gets or sets the event source.
+        /// </summary>
+        /// <value>
+        ///     The event source.
+        /// </value>
         [DataMember]
         public string EventSource
         {
@@ -127,10 +135,12 @@ namespace MLogHelperDotNet.Models
             set => SetProperty("event_source", value);
         }
 
-        /// -------------------------------------------------------------------------------------------------
-        /// <summary>Gets or sets a message describing the event.</summary>
-        /// <value>A message describing the event.</value>
-        /// =================================================================================================
+        /// <summary>
+        ///     Gets or sets a message describing the event.
+        /// </summary>
+        /// <value>
+        ///     A message describing the event.
+        /// </value>
         [DataMember]
         public string EventMessage
         {
@@ -138,10 +148,12 @@ namespace MLogHelperDotNet.Models
             set => SetProperty("event_message", value);
         }
 
-        /// -------------------------------------------------------------------------------------------------
-        /// <summary>Gets or sets the event details.</summary>
-        /// <value>The event details.</value>
-        /// =================================================================================================
+        /// <summary>
+        ///     Gets or sets the event details.
+        /// </summary>
+        /// <value>
+        ///     The event details.
+        /// </value>
         [DataMember]
         public object EventDetails
         {
@@ -149,10 +161,12 @@ namespace MLogHelperDotNet.Models
             set => SetProperty("event_details", value);
         }
 
-        /// -------------------------------------------------------------------------------------------------
-        /// <summary>Gets or sets the legal entity.</summary>
-        /// <value>The legal entity.</value>
-        /// =================================================================================================
+        /// <summary>
+        ///     Gets or sets the legal entity.
+        /// </summary>
+        /// <value>
+        ///     The legal entity.
+        /// </value>
         [DataMember]
         public string LegalEntity
         {
@@ -160,10 +174,12 @@ namespace MLogHelperDotNet.Models
             set => SetProperty("legal_entity", value);
         }
 
-        /// -------------------------------------------------------------------------------------------------
-        /// <summary>Gets or sets the legal basis.</summary>
-        /// <value>The legal basis.</value>
-        /// =================================================================================================
+        /// <summary>
+        ///     Gets or sets the legal basis.
+        /// </summary>
+        /// <value>
+        ///     The legal basis.
+        /// </value>
         [DataMember]
         public object LegalBasis
         {
@@ -171,10 +187,12 @@ namespace MLogHelperDotNet.Models
             set => SetProperty("legal_basis", value);
         }
 
-        /// -------------------------------------------------------------------------------------------------
-        /// <summary>Gets or sets the legal reason.</summary>
-        /// <value>The legal reason.</value>
-        /// =================================================================================================
+        /// <summary>
+        ///     Gets or sets the legal reason.
+        /// </summary>
+        /// <value>
+        ///     The legal reason.
+        /// </value>
         [DataMember]
         public object LegalReason
         {
@@ -182,10 +200,12 @@ namespace MLogHelperDotNet.Models
             set => SetProperty("legal_reason", value);
         }
 
-        /// -------------------------------------------------------------------------------------------------
-        /// <summary>Gets or sets the user.</summary>
-        /// <value>The user.</value>
-        /// =================================================================================================
+        /// <summary>
+        ///     Gets or sets the user.
+        /// </summary>
+        /// <value>
+        ///     The user.
+        /// </value>
         [DataMember]
         public string User
         {
@@ -193,10 +213,12 @@ namespace MLogHelperDotNet.Models
             set => SetProperty("user", value);
         }
 
-        /// -------------------------------------------------------------------------------------------------
-        /// <summary>Gets or sets the user session.</summary>
-        /// <value>The user session.</value>
-        /// =================================================================================================
+        /// <summary>
+        ///     Gets or sets the user session.
+        /// </summary>
+        /// <value>
+        ///     The user session.
+        /// </value>
         [DataMember]
         public string UserSession
         {
@@ -204,10 +226,12 @@ namespace MLogHelperDotNet.Models
             set => SetProperty("user_session", value);
         }
 
-        /// -------------------------------------------------------------------------------------------------
-        /// <summary>Gets or sets the user address.</summary>
-        /// <value>The user address.</value>
-        /// =================================================================================================
+        /// <summary>
+        ///     Gets or sets the user address.
+        /// </summary>
+        /// <value>
+        ///     The user address.
+        /// </value>
         [DataMember]
         public string UserAddress
         {
@@ -215,10 +239,12 @@ namespace MLogHelperDotNet.Models
             set => SetProperty("user_address", value);
         }
 
-        /// -------------------------------------------------------------------------------------------------
-        /// <summary>Gets or sets the subject.</summary>
-        /// <value>The subject.</value>
-        /// =================================================================================================
+        /// <summary>
+        ///     Gets or sets the subject.
+        /// </summary>
+        /// <value>
+        ///     The subject.
+        /// </value>
         [DataMember]
         public object Subject
         {
@@ -226,10 +252,12 @@ namespace MLogHelperDotNet.Models
             set => SetProperty("subject", value);
         }
 
-        /// -------------------------------------------------------------------------------------------------
-        /// <summary>Gets or sets the type of the subject.</summary>
-        /// <value>The type of the subject.</value>
-        /// =================================================================================================
+        /// <summary>
+        ///     Gets or sets the type of the subject.
+        /// </summary>
+        /// <value>
+        ///     The type of the subject.
+        /// </value>
         [DataMember]
         public object SubjectType
         {
@@ -237,10 +265,12 @@ namespace MLogHelperDotNet.Models
             set => SetProperty("subject_type", value);
         }
 
-        /// -------------------------------------------------------------------------------------------------
-        /// <summary>Gets or sets the name of the subject.</summary>
-        /// <value>The name of the subject.</value>
-        /// =================================================================================================
+        /// <summary>
+        ///     Gets or sets the name of the subject.
+        /// </summary>
+        /// <value>
+        ///     The name of the subject.
+        /// </value>
         [DataMember]
         public string SubjectName
         {
@@ -248,10 +278,12 @@ namespace MLogHelperDotNet.Models
             set => SetProperty("subject_name", value);
         }
 
-        /// -------------------------------------------------------------------------------------------------
-        /// <summary>Gets or sets the object.</summary>
-        /// <value>The object.</value>
-        /// =================================================================================================
+        /// <summary>
+        ///     Gets or sets the object.
+        /// </summary>
+        /// <value>
+        ///     The object.
+        /// </value>
         [DataMember]
         public object Object
         {
@@ -259,10 +291,12 @@ namespace MLogHelperDotNet.Models
             set => SetProperty("object", value);
         }
 
-        /// -------------------------------------------------------------------------------------------------
-        /// <summary>Gets or sets the type of the object.</summary>
-        /// <value>The type of the object.</value>
-        /// =================================================================================================
+        /// <summary>
+        ///     Gets or sets the type of the object.
+        /// </summary>
+        /// <value>
+        ///     The type of the object.
+        /// </value>
         [DataMember]
         public string ObjectType
         {
@@ -270,10 +304,12 @@ namespace MLogHelperDotNet.Models
             set => SetProperty("object_type", value);
         }
 
-        /// -------------------------------------------------------------------------------------------------
-        /// <summary>Gets or sets the name of the object.</summary>
-        /// <value>The name of the object.</value>
-        /// =================================================================================================
+        /// <summary>
+        ///     Gets or sets the name of the object.
+        /// </summary>
+        /// <value>
+        ///     The name of the object.
+        /// </value>
         [DataMember]
         public string ObjectName
         {
@@ -281,12 +317,11 @@ namespace MLogHelperDotNet.Models
             set => SetProperty("object_name", value);
         }
 
-        /// -------------------------------------------------------------------------------------------------
-        /// <summary>Sets a property.</summary>
-        /// <remarks></remarks>
+        /// <summary>
+        ///     Sets a property.
+        /// </summary>
         /// <param name="key">The key.</param>
         /// <param name="value">The value.</param>
-        /// =================================================================================================
         private void SetProperty(string key, object value)
         {
             if (value.IsNull() || (value is string str && str.IsNullOrWhiteSpace()) || value is ICollection { Count: 0 })
@@ -297,12 +332,13 @@ namespace MLogHelperDotNet.Models
                 properties.Add(key, value);
         }
 
-        /// -------------------------------------------------------------------------------------------------
-        /// <summary>Gets a property.</summary>
-        /// <remarks></remarks>
+        /// <summary>
+        ///     Gets a property.
+        /// </summary>
         /// <param name="key">The key.</param>
-        /// <returns>The property.</returns>
-        /// =================================================================================================
+        /// <returns>
+        ///     The property.
+        /// </returns>
         private object GetProperty(string key)
         {
             properties.TryGetValue(key, out var property);
@@ -333,12 +369,7 @@ namespace MLogHelperDotNet.Models
                     }
                     else
                     {
-                        var serializer = new System.Runtime.Serialization.Json.DataContractJsonSerializer(property.Value.GetType());
-                        var ms = new MemoryStream();
-                        serializer.WriteObject(ms, property.Value);
-                        var json = Encoding.Default.GetString(ms.ToArray());
-
-                        result.Append(json);
+                        result.Append(PropertyValueSerializerHelper.SerializePropertyValue(property.Value));
                     }
                 }
             }
