@@ -55,6 +55,7 @@
 		<PackageReference Include="RzR.Extensions.Domain" Version="7.1.0.5494" />
 		<PackageReference Include="RzR.Extensions.EntityLength" Version="3.0.1.7739" />
 		<PackageReference Include="System.Runtime" Version="4.3.1" />
+		<PackageReference Include="System.Private.Uri" Version="4.3.2" />
 		<PackageReference Include="System.ServiceModel.Duplex" Version="4.5.3" />
 		<PackageReference Include="System.ServiceModel.Http" Version="4.5.3" />
 		<PackageReference Include="System.ServiceModel.NetTcp" Version="4.5.3" />
