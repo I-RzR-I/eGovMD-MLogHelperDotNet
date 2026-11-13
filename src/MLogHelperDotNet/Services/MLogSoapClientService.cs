@@ -16,7 +16,7 @@
 
 #region U S A G E S
 
-using AggregatedGenericResultMessage.Abstractions;
+using RzR.ResultMessage.Abstractions;
 using MLogHelperDotNet.Abstractions;
 using MLogHelperDotNet.Models;
 using System;
@@ -31,10 +31,9 @@ namespace MLogHelperDotNet.Services
     /// <inheritdoc cref="IMLogEndpointClientService" />
     public class MLogSoapClientService : IMLogEndpointClientService
     {
-        /// -------------------------------------------------------------------------------------------------
-        /// <summary>Default constructor.</summary>
-        /// <remarks></remarks>
-        /// =================================================================================================
+        /// <summary>
+        ///     Default constructor.
+        /// </summary>
         public MLogSoapClientService() 
             => throw new NotImplementedException("SOAP implementation currently is not available!");
 

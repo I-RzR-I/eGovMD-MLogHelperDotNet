@@ -16,8 +16,8 @@
 
 #region U S A G E S
 
-using DomainCommonExtensions.CommonExtensions;
-using DomainCommonExtensions.DataTypeExtensions;
+using RzR.Extensions.Domain.Primitives;
+using RzR.Extensions.Domain.Text;
 using MLogHelperDotNet.Extensions;
 using System;
 using System.IO;
@@ -84,10 +84,6 @@ namespace MLogHelperDotNet.Configurations
             {
                 var x509Certificate2Collection = new X509Certificate2Collection();
                 x509Certificate2Collection.Import(certificatePath, certificatePassword, X509KeyStorageFlags.DefaultKeySet);
-                if (x509Certificate2Collection.Count > 1)
-                {
-                    CertificateLoader.StoreIntermediateCertificates(x509Certificate2Collection, 0, x509Certificate2Collection.Count - 1);
-                }
                 var x509Certificate2Collection2 = x509Certificate2Collection;
                 var index = x509Certificate2Collection2.Count - 1;
 
@@ -168,9 +164,6 @@ namespace MLogHelperDotNet.Configurations
             if (x509Certificate2Collection.Count.IsZero())
                 return null;
 
-            if (x509Certificate2Collection.Count > 1)
-                StoreIntermediateCertificates(x509Certificate2Collection, 1, x509Certificate2Collection.Count);
-
             return x509Certificate2Collection[0];
         }
 
@@ -200,30 +193,6 @@ namespace MLogHelperDotNet.Configurations
             }
 
             return x509Certificate2Collection;
-        }
-
-        /// <summary>
-        ///     Load certificate from store
-        /// </summary>
-        /// <param name="certificates">Certificate collection</param>
-        /// <param name="start">Start index</param>
-        /// <param name="end">End index</param>
-        /// <remarks></remarks>
-        private static void StoreIntermediateCertificates(X509Certificate2Collection certificates, int start, int end)
-        {
-            if (start >= end)
-                return;
-
-            var x509Store = new X509Store(StoreName.CertificateAuthority, StoreLocation.CurrentUser);
-            x509Store.Open(OpenFlags.ReadWrite);
-            for (var i = start; i < end; i++)
-            {
-                var certificate = certificates[i];
-                if (certificate.Issuer != certificate.Subject && !x509Store.Certificates.Contains(certificate))
-                    x509Store.Add(certificate);
-            }
-
-            x509Store.Close();
         }
     }
 }

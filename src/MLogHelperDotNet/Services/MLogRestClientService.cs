@@ -17,38 +17,40 @@
 
 #region U S A G E S
 
-using AggregatedGenericResultMessage;
-using AggregatedGenericResultMessage.Abstractions;
-using DomainCommonExtensions.ArraysExtensions;
+using RzR.ResultMessage;
+using RzR.ResultMessage.Abstractions;
+using RzR.Extensions.Domain.Collections;
 using MLogHelperDotNet.Abstractions;
 using MLogHelperDotNet.Extensions;
 using MLogHelperDotNet.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
 #if NETSTANDARD2_0_OR_GREATER || NET || NETCOREAPP3_1_OR_GREATER
 using Microsoft.Extensions.Options;
 using System.Net.Http;
-using AggregatedGenericResultMessage.Models;
+using RzR.ResultMessage.Models;
 #endif
 
 #if NET45
 using MNotifyHelperDotNet.Configurations.Options;
 using System.Net.Http;
 using System.Security.Cryptography.X509Certificates;
-using AggregatedGenericResultMessage.Models;
+using RzR.ResultMessage.Models;
 #endif
 
 #endregion
 
 namespace MLogHelperDotNet.Services
 {
-    /// -------------------------------------------------------------------------------------------------
-    /// <summary>A log client.  MLog client</summary>
-    /// <remarks></remarks>
-    /// =================================================================================================
+    /// <summary>
+    ///     A log client.  MLog client.
+    /// </summary>
+    /// <seealso cref="T:MLogHelperDotNet.Abstractions.IMLogEndpointClientService"/>
+    /// <seealso cref="T:IDisposable"/>
     public class MLogRestClientService : IMLogEndpointClientService, IDisposable
     {
         /// <summary>
@@ -61,11 +63,9 @@ namespace MLogHelperDotNet.Services
 
 #if NETSTANDARD2_0_OR_GREATER || NET || NETCOREAPP3_1_OR_GREATER
 
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>Constructor.</summary>
         /// <remarks></remarks>
         /// <param name="options">Options for controlling the operation.</param>
-        /// =================================================================================================
         public MLogRestClientService(IOptions<RemoteMLogOptions> options)
         {
             _remoteMLogOptions = options.Value;
@@ -75,11 +75,10 @@ namespace MLogHelperDotNet.Services
 
 #endif
 
-        /// -------------------------------------------------------------------------------------------------
-        /// <summary>Constructor.</summary>
-        /// <remarks></remarks>
+        /// <summary>
+        ///     Constructor.
+        /// </summary>
         /// <param name="options">[in,out] Options for controlling the operation.</param>
-        /// =================================================================================================
         public MLogRestClientService(ref RemoteMLogOptions options)
         {
             _remoteMLogOptions = options;
@@ -87,10 +86,9 @@ namespace MLogHelperDotNet.Services
             InitRequired();
         }
 
-        /// -------------------------------------------------------------------------------------------------
-        /// <summary>Default constructor.</summary>
-        /// <remarks>RzR, 12-Dec-23.</remarks>
-        /// =================================================================================================
+        /// <summary>
+        ///     Default constructor.
+        /// </summary>
         public MLogRestClientService()
         {
 #if NET45
@@ -109,7 +107,7 @@ namespace MLogHelperDotNet.Services
             if (jsonEvent.IsNullOrWhiteSpace())
             {
                 return Result<string>
-                    .Failure($"Cannot register empty event, ${nameof(jsonEvent)}");
+                    .Failure($"Cannot register empty event, {nameof(jsonEvent)}");
             }
 
             var registerResult = _client.HttpPost(_registerUrl.ToString(), jsonEvent);
@@ -124,7 +122,7 @@ namespace MLogHelperDotNet.Services
             {
                 return Result<string>
                     .Failure(new MessageDataModel("No events provided for registration",
-                        $"No events provided for registration, ${nameof(jsonEvents)}"));
+                        $"No events provided for registration, {nameof(jsonEvents)}"));
             }
 
             return RegisterEvent(string.Join(Environment.NewLine, jsonEvents));
@@ -137,7 +135,7 @@ namespace MLogHelperDotNet.Services
             {
                 return Result<string>
                     .Failure(new MessageDataModel("Cannot register empty event",
-                        $"Cannot register empty event, ${nameof(jsonEvent)}"));
+                        $"Cannot register empty event, {nameof(jsonEvent)}"));
             }
 
             var registerResult = await _client.HttpPostAsync(_registerUrl.ToString(), jsonEvent);
@@ -152,7 +150,7 @@ namespace MLogHelperDotNet.Services
             {
                 return Result<string>
                     .Failure(new MessageDataModel("No events provided for registration",
-                        $"No events provided for registration, ${nameof(jsonEvents)}"));
+                        $"No events provided for registration, {nameof(jsonEvents)}"));
             }
 
             return await RegisterEventAsync(string.Join(Environment.NewLine, jsonEvents));
@@ -164,7 +162,7 @@ namespace MLogHelperDotNet.Services
 
         /// <inheritdoc />
         public IResult<string> RegisterEventBatch(IEnumerable<MLogEventDto> logEvents)
-            => RegisterEventBatch(logEvents.Select(x => x.ToString()).ToList());
+            => RegisterEventBatch(logEvents?.Select(x => x.ToString()).ToList());
 
         /// <inheritdoc />
         public async Task<IResult<string>> RegisterEventAsync(MLogEventDto logEvent)
@@ -172,12 +170,11 @@ namespace MLogHelperDotNet.Services
 
         /// <inheritdoc />
         public async Task<IResult<string>> RegisterEventBatchAsync(IEnumerable<MLogEventDto> logEvents)
-            => await RegisterEventBatchAsync(logEvents.Select(x => x.ToString()).ToList());
+            => await RegisterEventBatchAsync(logEvents?.Select(x => x.ToString()).ToList());
 
-        /// -------------------------------------------------------------------------------------------------
-        /// <summary>Initializes the required option.</summary>
-        /// <remarks></remarks>
-        /// =================================================================================================
+        /// <summary>
+        ///     Initializes the required option.
+        /// </summary>
         private void InitRequired()
         {
             _registerUrl = new Uri(new Uri(_remoteMLogOptions.ServiceClientAddress), _remoteMLogOptions.ServiceEventRegisterPath);
@@ -187,11 +184,11 @@ namespace MLogHelperDotNet.Services
             {
                 ClientCertificates = { _remoteMLogOptions.ServiceCertificate },
             });
-            _client.Timeout = TimeSpan.FromMinutes(double.Parse(_remoteMLogOptions.ServiceTimeoutInMinute));
+            _client.Timeout = TimeSpan.FromMinutes(double.Parse(_remoteMLogOptions.ServiceTimeoutInMinute?.Trim().Replace(',', '.'), NumberStyles.Float, CultureInfo.InvariantCulture));
 #endif
 #if NETSTANDARD2_0_OR_GREATER || NET || NETCOREAPP3_1_OR_GREATER
             _client = new HttpClient(new HttpClientHandler { ClientCertificates = { _remoteMLogOptions.ServiceCertificate } });
-            _client.Timeout = TimeSpan.FromMinutes(double.Parse(_remoteMLogOptions.ServiceTimeoutInMinute));
+            _client.Timeout = TimeSpan.FromMinutes(double.Parse(_remoteMLogOptions.ServiceTimeoutInMinute?.Trim().Replace(',', '.'), NumberStyles.Float, CultureInfo.InvariantCulture));
 #endif
         }
     }

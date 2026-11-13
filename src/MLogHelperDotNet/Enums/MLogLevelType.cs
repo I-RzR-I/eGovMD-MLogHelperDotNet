@@ -16,10 +16,9 @@
 
 namespace MLogHelperDotNet.Enums
 {
-    ///-------------------------------------------------------------------------------------------------
-    /// <summary>Values that represent log level types.</summary>
-    /// <remarks></remarks>
-    ///=================================================================================================
+    /// <summary>
+    ///     Values that represent log level types.
+    /// </summary>
     public enum MLogLevelType
     {
         /// <summary>An enum constant representing the unknown option.</summary>

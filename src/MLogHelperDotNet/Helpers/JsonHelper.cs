@@ -16,25 +16,25 @@
 
 #region U S A G E S
 
-using DomainCommonExtensions.CommonExtensions;
+using RzR.Extensions.Domain.Primitives;
 using System.Text;
 
 #endregion
 
 namespace MLogHelperDotNet.Helpers
 {
-    /// -------------------------------------------------------------------------------------------------
-    /// <summary>A JSON helper.</summary>
-    /// <remarks></remarks>
-    /// =================================================================================================
+    /// <summary>
+    ///     A JSON helper.
+    /// </summary>
     internal static class JsonHelper
     {
-        ///-------------------------------------------------------------------------------------------------
-        /// <summary>Escape object.</summary>
-        /// <remarks></remarks>
+        /// <summary>
+        ///     Escape object.
+        /// </summary>
         /// <param name="obj">The object.</param>
-        /// <returns>A string.</returns>
-        ///=================================================================================================
+        /// <returns>
+        ///     A string.
+        /// </returns>
         internal static string EscapeObject(object obj)
         {
             var result = new StringBuilder();
@@ -43,12 +43,11 @@ namespace MLogHelperDotNet.Helpers
             return result.ToString();
         }
 
-        ///-------------------------------------------------------------------------------------------------
-        /// <summary>Appends an escaped JSON object.</summary>
-        /// <remarks></remarks>
+        /// <summary>
+        ///     Appends an escaped JSON object.
+        /// </summary>
         /// <param name="result">The result.</param>
         /// <param name="obj">The object.</param>
-        ///=================================================================================================
         internal static void AppendEscapedJsonObject(StringBuilder result, object obj)
         {
             if (obj.IsNull())

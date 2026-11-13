@@ -16,26 +16,24 @@
 
 #region U S A G E S
 
-using DomainCommonExtensions.DataTypeExtensions;
+using RzR.Extensions.Domain.Text;
 
 #endregion
 
 namespace MLogHelperDotNet.Extensions
 {
-    /// -------------------------------------------------------------------------------------------------
-    /// <summary>A string extensions.</summary>
-    /// <remarks></remarks>
-    /// =================================================================================================
+    /// <summary>
+    ///     A string extensions.
+    /// </summary>
     internal static class StringExtensions
     {
-        /// -------------------------------------------------------------------------------------------------
         /// <summary>
         ///     A string extension method that query if 'source' is null or white space.
         /// </summary>
-        /// <remarks>RzR, 02-Dec-23.</remarks>
         /// <param name="source">The source to act on.</param>
-        /// <returns>True if null or white space, false if not.</returns>
-        /// =================================================================================================
+        /// <returns>
+        ///     True if null or white space, false if not.
+        /// </returns>
         internal static bool IsNullOrWhiteSpace(this string source)
             => source.IsNullOrEmpty() || string.IsNullOrWhiteSpace(source);
     }

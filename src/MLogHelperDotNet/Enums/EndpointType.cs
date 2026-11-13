@@ -20,6 +20,7 @@ namespace MLogHelperDotNet.Enums
     ///-------------------------------------------------------------------------------------------------
     /// <summary>End point type.</summary>
     /// <remarks></remarks>
+    /// <remarks></remarks>
     ///=================================================================================================
     public enum EndpointType
     {

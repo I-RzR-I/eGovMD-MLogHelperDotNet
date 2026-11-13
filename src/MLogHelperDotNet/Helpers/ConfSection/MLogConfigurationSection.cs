@@ -26,31 +26,31 @@ using System.Configuration;
 
 namespace MLogHelperDotNet.Helpers.ConfSection
 {
-    ///-------------------------------------------------------------------------------------------------
-    /// <summary>MLog service configuration sections.</summary>
-    /// <remarks>RzR, 02-Dec-23.</remarks>
+    /// <summary>
+    ///     MLog service configuration sections.
+    /// </summary>
     /// <seealso cref="System.Configuration.ConfigurationSection"/>
-    ///=================================================================================================
     internal class MLogConfigurationSection : ConfigurationSection
     {
         /// <summary>(Immutable) name of the collection.</summary>
         private const string _collectionName = "RemoteMLogOptions";
 
-        ///-------------------------------------------------------------------------------------------------
-        /// <summary>MLog service options.</summary>
-        /// <value>Options that control the service.</value>
-        ///=================================================================================================
+        /// <summary>
+        ///     MLog service options.
+        /// </summary>
+        /// <value>
+        ///     Options that control the service.
+        /// </value>
         [ConfigurationProperty(_collectionName)]
         [ConfigurationCollection(typeof(MLogRemoteOptionElementCollection), AddItemName = "option")]
         internal MLogRemoteOptionElementCollection ServiceOptions
             => (MLogRemoteOptionElementCollection)base[_collectionName];
     }
 
-    ///-------------------------------------------------------------------------------------------------
-    /// <summary>MLog remote service configuration element collection.</summary>
-    /// <remarks>RzR, 02-Dec-23.</remarks>
+    /// <summary>
+    ///     MLog remote service configuration element collection.
+    /// </summary>
     /// <seealso cref="System.Configuration.ConfigurationElementCollection"/>
-    ///=================================================================================================
     internal class MLogRemoteOptionElementCollection : ConfigurationElementCollection
     {
         /// <inheritdoc/>
@@ -62,17 +62,18 @@ namespace MLogHelperDotNet.Helpers.ConfSection
             => ((MLogOptionConfigurationElement)element).Key;
     }
 
-    ///-------------------------------------------------------------------------------------------------
-    /// <summary>MLog option configuration element.</summary>
-    /// <remarks>RzR, 02-Dec-23.</remarks>
+    /// <summary>
+    ///     MLog option configuration element.
+    /// </summary>
     /// <seealso cref="System.Configuration.ConfigurationElement"/>
-    ///=================================================================================================
     internal class MLogOptionConfigurationElement : ConfigurationElement
     {
-        ///-------------------------------------------------------------------------------------------------
-        /// <summary>Option key.</summary>
-        /// <value>The key.</value>
-        ///=================================================================================================
+        /// <summary>
+        ///     Option key.
+        /// </summary>
+        /// <value>
+        ///     The key.
+        /// </value>
         [ConfigurationProperty("key", IsRequired = true, IsKey = true)]
         internal string Key
         {
@@ -80,10 +81,12 @@ namespace MLogHelperDotNet.Helpers.ConfSection
             set => this["key"] = value;
         }
 
-        ///-------------------------------------------------------------------------------------------------
-        /// <summary>Option value.</summary>
-        /// <value>The value.</value>
-        ///=================================================================================================
+        /// <summary>
+        ///     Option value.
+        /// </summary>
+        /// <value>
+        ///     The value.
+        /// </value>
         [ConfigurationProperty("value", IsRequired = true)]
         internal string Value
         {

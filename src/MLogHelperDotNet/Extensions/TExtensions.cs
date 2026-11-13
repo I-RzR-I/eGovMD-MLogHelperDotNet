@@ -25,25 +25,32 @@ using System.Linq;
 
 namespace MLogHelperDotNet.Extensions
 {
-    /// -------------------------------------------------------------------------------------------------
-    /// <summary>T extensions.</summary>
-    /// <remarks>RzR, 02-Dec-23.</remarks>
-    /// =================================================================================================
+    /// <summary>
+    ///     T extensions.
+    /// </summary>
     internal static class TExtensions
     {
-        /// -------------------------------------------------------------------------------------------------
-        /// <summary>Get sub array.</summary>
-        /// <remarks>RzR, 02-Dec-23.</remarks>
+        /// <summary>
+        ///     Get sub array.
+        /// </summary>
         /// <typeparam name="T">Source type.</typeparam>
         /// <param name="array">Source array.</param>
         /// <param name="offset">Offset.</param>
         /// <param name="length">Take.</param>
-        /// <returns>A T[].</returns>
-        /// =================================================================================================
+        /// <returns>
+        ///     A T[].
+        /// </returns>
         public static T[] SubArray<T>(this T[] array, int offset, int length) => array.Skip(offset)
             .Take(length)
             .ToArray();
 
+        /// <summary>
+        ///     A Type extension method that query if 'sourceType' is type of date time.
+        /// </summary>
+        /// <param name="sourceType">The sourceType to act on.</param>
+        /// <returns>
+        ///     True if type of date time, false if not.
+        /// </returns>
         internal static bool IsTypeOfDateTime(this Type sourceType)
             => sourceType == typeof(DateTime) || sourceType == typeof(DateTime?);
     }

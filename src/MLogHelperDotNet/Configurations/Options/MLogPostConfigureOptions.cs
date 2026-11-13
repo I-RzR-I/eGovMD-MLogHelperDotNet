@@ -18,7 +18,8 @@
 
 #region U S A G E S
 
-using DomainCommonExtensions.DataTypeExtensions;
+using RzR.Extensions.Domain.Primitives;
+using RzR.Extensions.Domain.Text;
 using Microsoft.Extensions.Options;
 using MLogHelperDotNet.Extensions;
 using MLogHelperDotNet.Models;
